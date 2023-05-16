@@ -1,5 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
+
 const inputPicker = document.querySelector('input#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
 const spanDays = document.querySelector('[data-days]');
@@ -27,7 +29,8 @@ const setDate = () => {
   const date = new Date(localStorage.getItem('selectedDates'));
   dateDifference = date.getTime() - dateDefault.getTime();
   if (dateDifference <= 0) {
-    window.alert('Please choose a date in the future');
+    // window.alert('Please choose a date in the future');
+    Notiflix.Notify.failure('Please choose a date in the future');
     startBtn.setAttribute('disabled', '');
   } else {
     startBtn.removeAttribute('disabled');
