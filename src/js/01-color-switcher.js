@@ -9,7 +9,7 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-startFunct = () => {
+const startFunct = () => {
   //   body.style.backgroundColor = getRandomHexColor();
   timerId = setInterval(() => {
     body.style.backgroundColor = getRandomHexColor();

@@ -39,7 +39,8 @@ const setDate = () => {
 };
 
 const HandleStartBtn = event => {
-  console.log(dateObject);
+  inputPicker.setAttribute('disabled', '');
+  startBtn.setAttribute('disabled', '');
   timerId = setInterval(() => {
     spanDays.textContent = padWithLeadingZeros(dateObject.days, 2);
     spanHours.textContent = padWithLeadingZeros(dateObject.hours, 2);
@@ -73,5 +74,7 @@ function padWithLeadingZeros(num, totalLength) {
 }
 
 clearInterval(timerId);
+inputPicker.removeAttribute('disabled');
+startBtn.removeAttribute('disabled');
 flatpickr(inputPicker, options);
 startBtn.addEventListener('click', HandleStartBtn);
