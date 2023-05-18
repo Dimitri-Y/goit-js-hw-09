@@ -10,7 +10,7 @@ const formSubmit = event => {
   let amount = parseInt(inputAmount.value);
   let delay = parseInt(inputDelay.value);
   let step = parseInt(inputStep.value);
-  if (amount <= 0 || delay <= 0 || step <= 0) {
+  if (amount <= 0 || delay < 0 || step < 0) {
     Notiflix.Notify.failure(`❌ Всі данні повинні бути більше нуля`);
   } else {
     for (let position = 1; position <= amount; position += 1) {
