@@ -42,12 +42,16 @@ const HandleStartBtn = event => {
   inputPicker.setAttribute('disabled', '');
   startBtn.setAttribute('disabled', '');
   timerId = setInterval(() => {
-    spanDays.textContent = padWithLeadingZeros(dateObject.days, 2);
-    spanHours.textContent = padWithLeadingZeros(dateObject.hours, 2);
-    spanMinutes.textContent = padWithLeadingZeros(dateObject.minutes, 2);
-    spanSeconds.textContent = padWithLeadingZeros(dateObject.seconds, 2);
-    dateDifference -= 1000;
-    dateObject = convertMs(dateDifference);
+    if (dateDifference < 0) {
+      clearInterval(timerId);
+    } else {
+      spanDays.textContent = padWithLeadingZeros(dateObject.days, 2);
+      spanHours.textContent = padWithLeadingZeros(dateObject.hours, 2);
+      spanMinutes.textContent = padWithLeadingZeros(dateObject.minutes, 2);
+      spanSeconds.textContent = padWithLeadingZeros(dateObject.seconds, 2);
+      dateDifference -= 1000;
+      dateObject = convertMs(dateDifference);
+    }
   }, 1000);
 };
 
